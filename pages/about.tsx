@@ -1,3 +1,5 @@
+import User from "@/components/user";
+
 interface User {
   name: string;
   email: string;
@@ -9,10 +11,7 @@ export default function About({ users }: { users: User[] }) {
     <>
       <h1>About page</h1>
       {users?.map((item) => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          <p>{item.email}</p>
-        </div>
+        <User user={item} key={item.id} />
       ))}
     </>
   );
