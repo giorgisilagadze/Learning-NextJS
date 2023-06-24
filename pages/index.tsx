@@ -28,17 +28,6 @@ export default function Home() {
       <h1>Home Page</h1>
       <Link href="/product">product page</Link>
       <button onClick={handleOnClick}>place order</button>
-      {/* 
-      <div style={mapContainerStyle}>
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          center={center}
-          zoom={10}
-        >
-          <Marker position={center} />
-        </GoogleMap>
-      </div>
-      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script> */}
     </>
   );
 }

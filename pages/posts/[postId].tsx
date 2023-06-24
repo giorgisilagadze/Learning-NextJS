@@ -4,6 +4,10 @@ interface Posts {
   body: string;
 }
 
+interface Item {
+  id: number;
+}
+
 export default function Post({ post }: { post: Posts }) {
   return (
     <div>
@@ -18,24 +22,35 @@ export default function Post({ post }: { post: Posts }) {
 }
 
 export async function getStaticPaths() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await response.json();
+
+  const paths = data.map((item: Item) => {
+    return {
+      params: {
+        postId: `${item.id}`,
+      },
+    };
+  });
   return {
-    paths: [
-      {
-        params: { postId: "1" },
-      },
-      {
-        params: { postId: "2" },
-      },
-      {
-        params: { postId: "3" },
-      },
-      {
-        params: { postId: "4" },
-      },
-      {
-        params: { postId: "5" },
-      },
-    ],
+    // paths: [
+    //   {
+    //     params: { postId: "1" },
+    //   },
+    //   {
+    //     params: { postId: "2" },
+    //   },
+    //   {
+    //     params: { postId: "3" },
+    //   },
+    //   {
+    //     params: { postId: "4" },
+    //   },
+    //   {
+    //     params: { postId: "5" },
+    //   },
+    // ],
+    paths,
     fallback: false,
   };
 }
