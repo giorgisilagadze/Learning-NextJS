@@ -1,18 +1,24 @@
-[
+{
+    "product" : [
     {
         "id": "1",
-        "text": "this is product n1"
+        "text": "this is product n1",
+        "category": "case"
     },
     {
         "id": "2",
-        "text": "this is product n2"
+        "text": "this is product n2",
+        "category": "airpods"
     },
     {
         "id": "3",
-        "text": "this is product n3"
+        "text": "this is product n3",
+        "category": "case"
     },
     {
         "id": "4",
-        "text": "this is product n4"
+        "text": "this is product n4",
+        "category": "airpods"
     }
-]
+  ]
+}

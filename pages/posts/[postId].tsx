@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 interface Posts {
   id: number;
   title: string;
@@ -9,6 +11,12 @@ interface Item {
 }
 
 export default function Post({ post }: { post: Posts }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div>
       <div key={post.id}>
@@ -51,7 +59,7 @@ export async function getStaticPaths() {
     //   },
     // ],
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -62,6 +70,12 @@ export async function getStaticProps(context: any) {
   );
   const data = await response.json();
   console.log(params.postId);
+
+  if (!data.id) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

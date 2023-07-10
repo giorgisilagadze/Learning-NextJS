@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import data from "../../../data.json";
 
-export default function ProductId() {
-  const route = useRouter();
-  const producId = data.find((item) => item.id == route.query.productId);
-  console.log(route.query.productId);
+// export default function ProductId() {
+//   const route = useRouter();
+//   const producId = data.find((item) => item.id == route.query.productId);
+//   console.log(route.query.productId);
 
-  return <h1>Product page of {producId?.text}</h1>;
-}
+//   return <h1>Product page of {producId?.text}</h1>;
+// }
