@@ -29,17 +29,21 @@ export default function Category({
 }
 
 export async function getServerSideProps(context: any) {
-  const { params } = context;
-  //   const { category } = params;
+  const { params, req, res, query } = context;
+  console.log(req.headers.cookie);
+  res.setHeader("Set-Cookie", ["name=Giorgi"]);
+  console.log(query);
+
+  const { category } = params;
   const response = await fetch(
-    `http://localhost:4000/product?category=${params.category}`
+    `http://localhost:4000/product?category=${category}`
   );
   const data = await response.json();
 
   return {
     props: {
       selling: data,
-      category: params.category,
+      category,
     },
   };
 }
