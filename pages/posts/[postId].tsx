@@ -38,19 +38,27 @@ export async function getStaticPaths() {
       params: {
         postId: `${item.id}`,
       },
-      {
-        params: { postId: "2" },
-      },
-      {
-        params: { postId: "3" },
-      },
-      {
-        params: { postId: "4" },
-      },
-      {
-        params: { postId: "5" },
-      },
-    ],
+    };
+  });
+  return {
+    // paths: [
+    //   {
+    //     params: { postId: "1" },
+    //   },
+    //   {
+    //     params: { postId: "2" },
+    //   },
+    //   {
+    //     params: { postId: "3" },
+    //   },
+    //   {
+    //     params: { postId: "4" },
+    //   },
+    //   {
+    //     params: { postId: "5" },
+    //   },
+    // ],
+    paths,
     fallback: false,
   };
 }
