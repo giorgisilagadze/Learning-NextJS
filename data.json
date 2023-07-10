@@ -20,5 +20,13 @@
         "text": "this is product n4",
         "category": "airpods"
     }
-  ]
+  ],
+  "dashboard" : [
+    {
+    "likes": 10,
+    "followers": 20,
+    "posts": 4
+  }
+
+]
 }
