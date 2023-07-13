@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { json } from "stream/consumers";
+import CommentId from "../api/comments/[commentId]";
 
 interface Item {
   id: number;
@@ -27,15 +28,26 @@ export default function Comment() {
     const data = await response.json();
   };
 
+  const deleteData = async (CommentId: number) => {
+    const response = await fetch(`/api/comments/${CommentId}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    fetchData();
+  };
+
   return (
     <div>
       <input type="text" onChange={(e) => setComm(e.target.value)} />
       <button onClick={submitData}>submit data</button>
       <button onClick={fetchData}>fetch data</button>
       {comments.map((item: Item) => (
-        <p>
-          {item.id} | {item.title}
-        </p>
+        <>
+          <p>
+            {item.id} | {item.title}
+          </p>
+          <button onClick={() => deleteData(item.id)}>delete</button>
+        </>
       ))}
     </div>
   );
