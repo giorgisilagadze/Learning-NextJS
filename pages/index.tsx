@@ -25,6 +25,10 @@ export default function Home() {
   };
   return (
     <>
+      <Head>
+        <title>Learning Next.js</title>
+        <meta name="description" content="Learning Next.js" />
+      </Head>
       <h1>Home Page</h1>
       <Link href="/product">product page</Link>
       <button onClick={handleOnClick}>place order</button>
