@@ -1,4 +1,6 @@
+import Footer from "@/components/Footer";
 import User from "@/components/user";
+import { Title } from "@/styles/styled.about";
 
 interface User {
   name: string;
@@ -9,7 +11,7 @@ interface User {
 export default function About({ users }: { users: User[] }) {
   return (
     <>
-      <h1>About page</h1>
+      <Title>About page</Title>
       {users?.map((item) => (
         <User user={item} key={item.id} />
       ))}
@@ -28,3 +30,12 @@ export async function getStaticProps() {
     },
   };
 }
+
+About.getLayout = function pageLayout(page: any) {
+  return (
+    <>
+      {page}
+      <Footer />
+    </>
+  );
+};
