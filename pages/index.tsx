@@ -23,6 +23,10 @@ export default function Home() {
     lat: 37.7749,
     lng: -122.4194,
   };
+
+  const name = process.env.DB_NAME;
+  console.log(name);
+
   return (
     <>
       <Head>
