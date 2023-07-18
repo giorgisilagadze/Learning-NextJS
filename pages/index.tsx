@@ -36,6 +36,7 @@ export default function Home() {
       <h1>Home Page</h1>
       <Link href="/product">product page</Link>
       <button onClick={handleOnClick}>place order</button>
+      <p>{process.env.NEXT_PUBLIC_NUMBER}</p>
     </>
   );
 }
