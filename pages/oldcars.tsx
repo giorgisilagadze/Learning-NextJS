@@ -9,6 +9,7 @@ export default function Oldcars() {
       {["1", "2", "3", "4", "5"].map((image) => (
         <Image src={`/${image}.jpeg`} alt="old car" width="300" height="200" />
       ))}
+      <p>wooow</p>
     </>
   );
 }
