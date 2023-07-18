@@ -1,20 +1,23 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
-import type { AppProps, NextComponentType } from "next/app";
+import type { AppProps } from "next/app";
+import type { NextComponentType, NextPage } from "next";
 import type { NextPageContext } from "next";
 import Head from "next/head";
+import { ReactElement, ReactNode } from "react";
 
-interface ComponentWithLayout
-  extends NextComponentType<NextPageContext, any, any> {
-  getLayout?: (page: JSX.Element) => JSX.Element;
-}
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
-export default function App({ Component, pageProps }: AppProps) {
-  const ComponentWithLayout = Component as ComponentWithLayout;
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
-  if (ComponentWithLayout.getLayout) {
-    return ComponentWithLayout.getLayout(<Component {...pageProps} />);
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  if (Component.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />);
   }
   return (
     <>
